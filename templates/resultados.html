@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados - Generador de Publicidad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Resultados Generados</h1>
+        <a href="{{ url_for('dashboard') }}" class="btn">Volver al Panel</a>
+        <a href="{{ url_for('logout') }}" class="btn" style="background: #23235b;">Cerrar sesión</a>
+    </header>
+    <main>
+        <div class="card" style="max-width:700px;">
+            <h2 style="margin-bottom:1.5rem;">Tus copys personalizados</h2>
+            <div id="result-section">
+                <div id="result-list" class="result-list">
+                    <!-- Aquí se mostrarán los resultados generados dinámicamente -->
+                    <p style="color:#aaa;">No hay resultados para mostrar.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

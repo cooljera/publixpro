@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido - Generador de Publicidad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a Publix Pro</h1>
+    </header>
+    <main>
+        <div class="card" style="max-width:500px;">
+            <h2 style="margin-bottom:1.2rem;">Generador de Publicidad Inteligente para Restaurantes</h2>
+            <p style="margin-bottom:1.5rem;">
+                Crea mensajes personalizados y promociones para tus clientes en segundos.<br>
+                Sube tu base de datos, elige el tipo de copy y tono, y obtén resultados listos para enviar.
+            </p>
+            <a href="{{ url_for('login') }}" class="btn" style="width:100%;">Iniciar sesión</a>
+            <form id="visitante-form" method="POST" action="{{ url_for('login') }}" style="width:100%;margin:0;">
+                <input type="hidden" name="username" value="visitante">
+                <input type="hidden" name="password" value="visitante">
+                <button type="submit" class="btn btn-secondary" style="width:100%;">Ingreso visitante</button>
+            </form>
+            <a href="/register" class="btn btn-accent" style="width:100%;">Registrarse</a>
+        </div>
+    </main>
+</body>
+</html>

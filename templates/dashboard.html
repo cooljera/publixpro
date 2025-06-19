@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Principal - Generador de Publicidad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Panel de Generación de Publicidad</h1>
+        <a href="{{ url_for('logout') }}" class="btn" style="background: #23235b;">Cerrar sesión</a>
+    </header>
+    <main>
+        <div class="card">
+            <form id="upload-form" enctype="multipart/form-data">
+                <h2 style="margin-bottom:1.2rem;">Sube tu archivo de clientes</h2>
+                <div class="form-group">
+                    <label for="excel-file">Archivo Excel (.xls, .xlsx)</label>
+                    <input type="file" id="excel-file" name="excel" accept=".xls,.xlsx" required>
+                </div>
+                <div class="form-group">
+                    <label for="copy-type">Tipo de Copy</label>
+                    <select id="copy-type" name="copy_type" required>
+                        <option value="promocion">Promoción</option>
+                        <option value="cumpleaños">Cumpleaños</option>
+                        <option value="bienvenida">Bienvenida</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tone">Tono del Mensaje</label>
+                    <select id="tone" name="tone" required>
+                        <option value="formal">Formal</option>
+                        <option value="divertido">Divertido</option>
+                        <option value="agresivo">Agresivo</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" id="submit-btn" style="width:100%;">Generar Copys</button>
+                <div id="loader" style="display:none; text-align:center; margin-top:1rem;">
+                    <span style="color:var(--accent);font-weight:bold;">Procesando...</span>
+                </div>
+            </form>
+        </div>
+        <div class="card" id="result-section" style="display:none;">
+            <h2 style="margin-bottom:1.2rem;">Resultados</h2>
+            <div id="result-list" class="result-list"></div>
+        </div>
+    </main>
+    <script>
+        // Permite saber si el usuario es premium (para mostrar WhatsApp)
+        window.PREMIUM = {{ 'true' if premium else 'false' }};
+    </script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

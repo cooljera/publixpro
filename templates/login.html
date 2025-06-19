@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión - Generador de Publicidad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Generador de Publicidad para Restaurantes</h1>
+    </header>
+    <main>
+        <div class="card">
+            <form method="POST" action="{{ url_for('login') }}">
+                <h2 style="margin-bottom:1.2rem;">Iniciar Sesión</h2>
+                {% if error %}
+                    <div style="color:#ff6b6b; margin-bottom:1rem; text-align:center;">{{ error }}</div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+
+            <!-- Formulario oculto para ingreso visitante -->
+            <form id="visitante-form" method="POST" action="{{ url_for('login') }}" style="display:none;">
+                <input type="hidden" name="username" value="visitante">
+                <input type="hidden" name="password" value="visitante">
+            </form>
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('visitante-form').submit();">
+                Ingreso visitante (Temporal)
+            </button>
+
+            <a href="/register" class="btn btn-accent">Registrarse</a>
+        </div>
+    </main>
+</body>
+</html>
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if username in USERS and USERS[username] == password:
+        session['user'] = username
+        session['premium'] = True if username == "admin" else False
+        return redirect(url_for('menu'))  # <-- Cambia aquí
+    return render_template('login.html', error="Usuario o contraseña incorrectos.")

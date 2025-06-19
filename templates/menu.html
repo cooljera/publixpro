@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal - Publix Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .menu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .menu-card {
+            background: var(--card, #18183a);
+            border-radius: 1.2rem;
+            box-shadow: var(--shadow, 0 4px 24px 0 rgba(46,47,255,0.15));
+            padding: 2rem 1.5rem;
+            min-width: 220px;
+            max-width: 260px;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .menu-card:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 8px 32px 0 rgba(162,89,255,0.18);
+        }
+        .menu-card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent, #00ffe7);
+        }
+        .whatsapp-float {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 100;
+        }
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(90deg, #25d366, #128c7e);
+            color: #fff !important;
+            padding: 1rem 1.3rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 16px 0 #128c7e55;
+            text-decoration: none;
+            gap: 0.7rem;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .whatsapp-float a:hover {
+            background: linear-gradient(90deg, #128c7e, #25d366);
+            transform: scale(1.07);
+        }
+        @media (max-width: 600px) {
+            .menu-grid { flex-direction: column; gap: 1.2rem; }
+            .menu-card { min-width: 90vw; max-width: 98vw; }
+        }
+    </style>
+</head>
+<body>
+    <header style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+        <h1 style="margin:0;">Menú Principal</h1>
+        <div style="display:flex;gap:0.7rem;">
+            <a href="{{ url_for('registro_restaurante') }}" class="btn btn-accent">Datos del Restaurante</a>
+            <a href="{{ url_for('logout') }}" class="btn" style="background: #23235b;">Cerrar sesión</a>
+        </div>
+    </header>
+    <main>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h3>Cliente Fiel</h3>
+                <p>Herramienta para fidelizar y premiar a tus mejores clientes.</p>
+                <a href="/cliente-fiel" class="btn">Ir a Cliente Fiel</a>
+            </div>
+            <div class="menu-card">
+                <h3>Copy Express</h3>
+                <p>Genera copys y mensajes promocionales personalizados al instante.</p>
+                <a href="/dashboard" class="btn">Ir a Copy Express</a>
+            </div>
+            <!-- Aquí puedes agregar más aplicaciones en el futuro -->
+        </div>
+    </main>
+    <div class="whatsapp-float">
+        <a href="https://wa.me/XXXXXXXXXXX?text=Hola%20Publix%20Pro%20Admin%2C%20necesito%20ayuda%20con%20la%20plataforma" target="_blank">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 32 32"><path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.74 6.41l-1.84 6.73 6.9-1.81c1.86 1.02 3.97 1.56 6.02 1.56h.01c7.06 0 12.8-5.74 12.8-12.8s-5.74-12.8-12.8-12.8zm0 23.36c-1.82 0-3.62-.48-5.19-1.38l-.37-.21-4.1 1.08 1.1-4.01-.24-.41c-1.08-1.77-1.65-3.81-1.65-5.89 0-6.05 4.93-10.98 10.98-10.98s10.98 4.93 10.98 10.98-4.93 10.98-10.98 10.98zm6.01-8.29c-.33-.17-1.95-.96-2.25-1.07-.3-.11-.52-.17-.74.17-.22.33-.85 1.07-1.04 1.29-.19.22-.38.25-.71.08-.33-.17-1.39-.51-2.65-1.62-.98-.87-1.64-1.94-1.83-2.27-.19-.33-.02-.51.15-.68.15-.15.33-.38.5-.57.17-.19.22-.33.33-.55.11-.22.06-.41-.03-.58-.09-.17-.74-1.78-1.01-2.44-.27-.65-.54-.56-.74-.57-.19-.01-.41-.01-.63-.01-.22 0-.58.08-.89.41-.3.33-1.17 1.14-1.17 2.77s1.2 3.22 1.37 3.44c.17.22 2.36 3.6 5.73 4.91.8.28 1.43.45 1.92.58.81.21 1.54.18 2.12.11.65-.08 1.95-.8 2.23-1.57.28-.77.28-1.43.2-1.57-.08-.14-.3-.22-.63-.39z"/></svg>
+            Ayuda WhatsApp
+        </a>
+    </div>
+</body>
+</html>

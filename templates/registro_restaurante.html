@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos del Restaurante</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Datos del Restaurante</h1>
+        <a href="{{ url_for('menu') }}" class="btn" style="background: #23235b;">Volver al Menú</a>
+    </header>
+    <main>
+        <div class="card" style="max-width:600px;">
+            <form method="POST" action="{{ url_for('registro_restaurante') }}">
+                <div class="form-group">
+                    <label for="nombre_rest">Nombre</label>
+                    <input type="text" id="nombre_rest" name="nombre_rest" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion_rest">Dirección</label>
+                    <input type="text" id="direccion_rest" name="direccion_rest" required>
+                </div>
+                <div class="form-group">
+                    <label for="horario_rest">Horario</label>
+                    <input type="text" id="horario_rest" name="horario_rest" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp_rest">WhatsApp</label>
+                    <input type="text" id="whatsapp_rest" name="whatsapp_rest" required>
+                </div>
+                <button type="submit" class="btn btn-accent">Guardar Datos</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
